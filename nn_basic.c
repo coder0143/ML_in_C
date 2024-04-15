@@ -36,16 +36,6 @@ double grad_b(double x[], double y[], struct model m){
 }
 
 int main(){
-    int num;
-    FILE *fptr;
-
-    if((fptr = fopen("train.csv", "r")) == NULL){
-        printf("Error\n");
-    }
-
-    fscanf(fptr, "%d", num);
-    printf("%d\n", num);
-
     double x[5] = {1,2,3,4,5};
     double y[5] = {2,5,8,10,13};
 
