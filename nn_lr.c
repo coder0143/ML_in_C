@@ -87,9 +87,9 @@ int main(void){
 
     // display dataset
     int length = len-1;
-    for(int i=0; i < length; i++){
-        printf("%.2f %.2f %.2f\n", input_arr[0][i], input_arr[1][i], output_arr[i]);
-    }
+    // for(int i=0; i < length; i++){
+    //     printf("%.2f %.2f %.2f\n", input_arr[0][i], input_arr[1][i], output_arr[i]);
+    // }
     
     // initialize model
     struct model m;
@@ -105,9 +105,13 @@ int main(void){
         if(i%10 == 0){
             //printf("Error %d: %f\n", i, cost(input_arr,output_arr,m,length));
         }
-        m.w0 -= (lr/length)*(grad_w0(input_arr,output_arr,m,length));
-        m.w1 -= (lr/length)*(grad_w1(input_arr,output_arr,m,length));
-        m.b -= (lr/length)*(grad_b(input_arr,output_arr,m,length));
+        double mw0 = (lr/length)*(grad_w0(input_arr,output_arr,m,length));
+        double mw1 = (lr/length)*(grad_w1(input_arr,output_arr,m,length));
+        double mb = (lr/length)*(grad_b(input_arr,output_arr,m,length));
+
+        m.w0 -= mw0;
+        m.w1 -= mw1;
+        m.b -= mb;
     }
 
     // Predictions and accuracy
